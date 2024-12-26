@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 5px solid rgb(42, 42, 42);
+    width: 47%;
+}
+
+.tile {
+    background-color: black;
+    width: calc((100%) / 20);
+    aspect-ratio: 1/1;
+    border: 2px solid rgb(42, 42, 42);
+}
