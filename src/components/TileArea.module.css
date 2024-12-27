@@ -11,3 +11,14 @@
     aspect-ratio: 1/1;
     border: 2px solid rgb(42, 42, 42);
 }
+
+@media (max-width: 1000px) {
+    .container {
+        width: 99%;
+        border: 2px solid rgb(42, 42, 42);
+    }
+
+    .tile {
+        border: 1px solid rgb(42, 42, 42);
+    }
+}
