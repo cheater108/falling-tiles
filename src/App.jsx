@@ -2,20 +2,26 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import TileArea from "./components/TileArea";
 import { moveByOne } from "./utils/moveByOne";
-import { getRandomColor, getRandomTiles } from "./utils/randomGenerator";
+import {
+    getRandomColor,
+    getRandomTiles,
+    incrementalRandomTile,
+} from "./utils/randomGenerator";
+import needToRerender from "./utils/needToRerender";
 
 function App() {
     const [tiles, setTiles] = useState(getRandomTiles);
     const [color, setColor] = useState(getRandomColor);
+    const [colorToggle, setColorToggle] = useState(false);
     const [play, setPlay] = useState(true);
     const [speed, setSpeed] = useState(false);
     const timeRef = useRef(null);
 
     useEffect(() => {
         if (play) {
-            if (Number(tiles[0].split(",")[0]) > 21) {
-                setTiles(() => getRandomTiles());
-                setColor(() => getRandomColor());
+            const { flag, ind } = needToRerender(tiles);
+            if (flag) {
+                setTiles(() => incrementalRandomTile(tiles, ind));
                 return;
             }
             timeRef.current = setTimeout(
@@ -24,6 +30,15 @@ function App() {
             );
         }
     });
+
+    // useEffect(() => {
+    //     if (play) {
+    //         setTimeout(() => {
+    //             setColor(() => getRandomColor());
+    //             setColorToggle(!colorToggle);
+    //         }, 2000);
+    //     }
+    // }, [colorToggle]);
 
     return (
         <div className="container">
