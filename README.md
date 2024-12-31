@@ -1,6 +1,6 @@
 # Falling tiles
 
-Falling tiles animation done using react. (kind of like tetris)
+Falling tiles animation done using react.
 
 ## Run Locally
 
